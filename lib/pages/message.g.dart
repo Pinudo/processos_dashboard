@@ -7,8 +7,8 @@ part of 'message.dart';
 // **************************************************************************
 
 Message _$MessageFromJson(Map<String, dynamic> json) {
-  return Message(json['subject'] as String, json['body'] as String);
+  return Message(json['status'] as String, json['dataInicio'] as String, json['dataFim'] as String);
 }
 
 Map<String, dynamic> _$MessageToJson(Message instance) =>
-    <String, dynamic>{'subject': instance.subject, 'body': instance.body};
+    <String, dynamic>{'status': instance.status, 'dataInicio': instance.dataInicio, 'dataFim': instance.dataFim};

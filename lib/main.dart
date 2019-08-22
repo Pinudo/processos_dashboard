@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:processos_dashboard/pages/message_list.dart';
+import 'package:processos_dashboard/pages/main_page_dashboard.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: '16 : 20',
       theme: ThemeData(primarySwatch: Colors.blue, accentColor: Colors.red),
-      home: MessageList(title: 'Flutter App Ok'),
+      home: MainPage(),
     );
   }
 }
