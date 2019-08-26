@@ -284,6 +284,7 @@ class _MainPageState extends State<MainPage> {
                 );
               case ConnectionState.done:
                 var messages = snapshot.data[0];
+                print('OK $messages.agenda ' + messages.agendaDetalhe[0].dataProcessamento);
                 return StaggeredGridView.count(
                   crossAxisCount: 2,
                   crossAxisSpacing: 12.0,
@@ -423,6 +424,7 @@ class _MainPageState extends State<MainPage> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 19.0)),
+                                      
                               Text(messages.agenda.dataInicio,
                                   style: TextStyle(color: Colors.black45)),
                             ]),

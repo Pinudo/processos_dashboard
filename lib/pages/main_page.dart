@@ -429,8 +429,7 @@ class _MainPageState extends State<MainPage> {
                           )))
                     ]),
               ),
-              onTap: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => ShopItemsPage())),
+              onTap: () => {}
             )
           ],
           staggeredTiles: [
