@@ -283,7 +283,7 @@ class _MainPageState extends State<MainPage> {
                   child: CircularProgressIndicator(),
                 );
               case ConnectionState.done:
-                var messages = snapshot.data;
+                var messages = snapshot.data[0];
                 return StaggeredGridView.count(
                   crossAxisCount: 2,
                   crossAxisSpacing: 12.0,
@@ -423,10 +423,11 @@ class _MainPageState extends State<MainPage> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 19.0)),
-                              Text('2019-08-16',
+                              Text(messages.agenda.dataInicio,
                                   style: TextStyle(color: Colors.black45)),
                             ]),
-                      ),
+                      ),onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => ShopItemsPage())),
                     ),
                     _buildTile(
                       Padding(
