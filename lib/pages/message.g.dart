@@ -18,7 +18,11 @@ Message _$MessageFromJson(Map<String, dynamic> json) {
           ?.map((e) => e == null
               ? null
               : AgendaDetalhe.fromJson(e as Map<String, dynamic>))
-          ?.toList());
+          ?.toList(),
+      json['processamentoBvArquivo'] == null
+          ? null
+          : ProcessaArquivoBV.fromJson(
+              json['processamentoBvArquivo'] as Map<String, dynamic>));
 }
 
 Map<String, dynamic> _$MessageToJson(Message instance) => <String, dynamic>{
@@ -26,5 +30,6 @@ Map<String, dynamic> _$MessageToJson(Message instance) => <String, dynamic>{
       'dataInicio': instance.dataInicio,
       'dataFim': instance.dataFim,
       'agenda': instance.agenda,
-      'agendaDetalhe': instance.agendaDetalhe
+      'agendaDetalhe': instance.agendaDetalhe,
+      'processamentoBvArquivo': instance.processamentoBvArquivo
     };

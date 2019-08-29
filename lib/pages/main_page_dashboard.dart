@@ -4,6 +4,7 @@ import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:http/http.dart' as http;
 import 'package:processos_dashboard/pages/message.dart';
+import 'package:processos_dashboard/pages/process_agendamento_detalhe.dart';
 import 'shop_items_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -284,7 +285,11 @@ class _MainPageState extends State<MainPage> {
                 );
               case ConnectionState.done:
                 var messages = snapshot.data[0];
-                print('OK $messages.agenda ' + messages.agendaDetalhe[0].dataProcessamento);
+                if(messages.agenda.status == "F"){
+                  messages.agenda.status = "Finalizado";
+                }
+                print('OK $messages.agenda ' +
+                    messages.agendaDetalhe[0].dataProcessamento);
                 return StaggeredGridView.count(
                   crossAxisCount: 2,
                   crossAxisSpacing: 12.0,
@@ -372,10 +377,14 @@ class _MainPageState extends State<MainPage> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 19.0)),
-                              Text('Finalizado',
+                              Text(messages.agenda.status,
                                   style: TextStyle(color: Colors.black45)),
                             ]),
-                      ),
+                      ),onTap: () { Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => ProcessAgendamentoDetalhe(messages.agenda.status, messages.agenda.dataInicio, messages.agenda.dataFim)));
+                              },
                     ),
                     _buildTile(
                       Padding(
@@ -424,12 +433,15 @@ class _MainPageState extends State<MainPage> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 19.0)),
-                                      
-                              Text(messages.agenda.dataInicio,
+                              Text(messages.agendaDetalhe[0].dataProcessamento,
                                   style: TextStyle(color: Colors.black45)),
                             ]),
-                      ),onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => ShopItemsPage())),
+                      ),
+                      onTap: () { Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => ShopItemsPage(messages.agendaDetalhe, agendaDetalhe: messages.agendaDetalhe,)));
+                              },
                     ),
                     _buildTile(
                       Padding(
@@ -463,8 +475,11 @@ class _MainPageState extends State<MainPage> {
                                   )))
                             ]),
                       ),
-                      onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => ShopItemsPage())),
+                      onTap: () { Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => ShopItem(messages.agendaDetalhe[0].dataProcessamento, messages.agendaDetalhe[0].qtdRegistros)));
+                              },
                     )
                   ],
                   staggeredTiles: [
