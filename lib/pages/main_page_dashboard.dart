@@ -5,6 +5,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:http/http.dart' as http;
 import 'package:processos_dashboard/pages/message.dart';
 import 'package:processos_dashboard/pages/process_agendamento_detalhe.dart';
+import 'package:processos_dashboard/pages/processa_venda_bv_detalhe.dart';
 import 'shop_items_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -288,8 +289,8 @@ class _MainPageState extends State<MainPage> {
                 if(messages.agenda.status == "F"){
                   messages.agenda.status = "Finalizado";
                 }
-                print('OK $messages.agenda ' +
-                    messages.agendaDetalhe[0].dataProcessamento);
+               /*  print('OK $messages.agenda ' +
+                    messages.processa); */
                 return StaggeredGridView.count(
                   crossAxisCount: 2,
                   crossAxisSpacing: 12.0,
@@ -354,7 +355,11 @@ class _MainPageState extends State<MainPage> {
                               Text('Finalizado',
                                   style: TextStyle(color: Colors.black45)),
                             ]),
-                      ),
+                      ),onTap: () { Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => ContactUsScreen()));
+                              },
                     ),
                     _buildTile(
                       Padding(

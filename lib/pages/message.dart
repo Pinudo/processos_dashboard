@@ -29,13 +29,13 @@ class Message {
 
     //String content = response.body;
     String content =
-        '[{"status": "F", "dataInicio": "2019-08-16", "dataFim": "2019-08-16", "processamentoBvArquivo": {"status": "F","dataInicio": "2019-08-28 21:32:34","dataFim": "2019-08-28 23:23:14","infoProcesso": "{\"arquivo\":\"https://s3.amazonaws.com/brasilcap-darwin-files-hub/input/bv/NEWENV/JSON/NEWENV020151620190828001221.json"}","newRet": {"arquivo": "https://s3.amazonaws.com/brasilcap-darwin-files-hub/output/bv/NEWRET/TXT/NEWRET0201516201908280000001221.txt","status": "OK"},"emiEnv": {"arquivo": "https://s3.amazonaws.com/brasilcap-darwin-files-hub/output/bv/EMIENV/TXT/EMIENV0201516201908280000001221.txt","status": "OK"}},"agenda": {"status": "F", "dataInicio": "2019-08-23", "dataFim": "2019-08-16"}, "agendaDetalhe":[{"dataProcessamento": "2019-08-13","qtdRegistros": 1},{"dataProcessamento": "2019-08-09","qtdRegistros": 2998},{"dataProcessamento": "2019-08-07","qtdRegistros": 163}]}]';
-        var parsedJson = json.decode(content);
+        '[{"status": "F", "dataInicio": "2019-08-16", "dataFim": "2019-08-16", "processamentoBvArquivo": {"status": "F","dataInicio": "2019-08-28 21:32:34","dataFim": "2019-08-28 23:23:14","newRet": {"arquivo":"OK","status": "OK"},"emiEnv": {"arquivo":"OK","status": "OK"}},"agenda": {"status": "F", "dataInicio": "2019-08-23", "dataFim": "2019-08-16"}, "agendaDetalhe":[{"dataProcessamento": "2019-08-13","qtdRegistros": 1},{"dataProcessamento": "2019-08-09","qtdRegistros": 2998},{"dataProcessamento": "2019-08-07","qtdRegistros": 163}]}]';
+    var parsedJson = json.decode(content);
     print('${parsedJson.runtimeType} : $parsedJson');
     List collection = parsedJson;
     List<Message> _messages =
         collection.map((json) => Message.fromJson(json)).toList();
-        print(_messages[0].agendaDetalhe[0].toString());
+    print(_messages.toString());
     return _messages;
   }
 }

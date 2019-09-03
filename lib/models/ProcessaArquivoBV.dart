@@ -1,3 +1,6 @@
+import 'package:processos_dashboard/models/EmiEnv.dart';
+import 'package:processos_dashboard/models/NewRet.dart';
+
 class ProcessaArquivoBV {
   String status;
   String dataInicio;
@@ -6,52 +9,31 @@ class ProcessaArquivoBV {
   NewRet newRet;
   EmiEnv emiEnv;
 
-  ProcessaArquivoBV(String status, String dataInicio, String dataFim, NewRet newRet, EmiEnv emiEnv) {
+  ProcessaArquivoBV(
+      String status, String dataInicio, String dataFim, String infoProcesso, NewRet newRet, EmiEnv emiEnv) {
     this.status = status;
     this.dataInicio = dataInicio;
     this.dataFim = dataFim;
+    this.infoProcesso = infoProcesso;
     this.newRet = newRet;
     this.emiEnv = emiEnv;
   }
-
   ProcessaArquivoBV.fromJson(Map json)
       : status = json['status'],
         dataInicio = json['dataInicio'],
         dataFim = json['dataFim'],
-        newRet = json['newRet'],
-        emiEnv = json['emiEnv'];
+        infoProcesso = json['infoProcesso'],
+        newRet = NewRet.fromJson(json['newRet'] as Map<String, dynamic>),
+        emiEnv = EmiEnv.fromJson(json['emiEnv'] as Map<String, dynamic>);
 
   Map toJson() {
-    return {'status': status, 'dataInicio': dataInicio, 'dataFim':dataFim};
-  }
-}
-
-class NewRet {
-  String arquivo;
-  String status;
-
-  NewRet(this.status, this.arquivo);
-
-  NewRet.fromJson(Map json) :
-  arquivo = json['arquivo'],
-  status = json['status'];
-
-  Map toJson(){
-    return {'arquivo': arquivo, 'status': status};
-  }
-}
-
-class EmiEnv {
-  String arquivo;
-  String status;
-
-  EmiEnv(this.arquivo, this.status);
-
-  EmiEnv.fromJson(Map json) :
-  arquivo = json['arquivo'],
-  status = json['status'];
-
-  Map toJson(){
-    return {'arquivo': arquivo, 'status': status};
+    return {
+      'status': status,
+      'dataInicio': dataInicio,
+      'dataFim': dataFim,
+      'infoProcesso': infoProcesso,
+      'newRet': newRet,
+      'emiEnv': emiEnv
+    };
   }
 }
