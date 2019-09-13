@@ -12,14 +12,14 @@ class ProcessAgendamentoDetalhe extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.blue[900],
         leading: IconButton(
-          color: Colors.black,
+          color: Colors.white,
           onPressed: () => Navigator.of(context).pop(),
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: Icon(Icons.arrow_back, color: Colors.white),
         ),
         title: Text('Agendamento BB',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700)),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
       ),
       body: Padding(
         padding: EdgeInsets.only(bottom: 16.0),

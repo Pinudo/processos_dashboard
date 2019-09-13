@@ -53,13 +53,13 @@ class _MessageListState extends State<MessageList> {
         itemBuilder: (BuildContext context, int index) {
           Message message = messages[index];
           return ListTile(
-            title: Text(message.status),
+            title: Text(message.processamentoBvArquivo.status),
             isThreeLine: true,
             leading: CircleAvatar(
               child: Text('PJ'),
             ),
             subtitle: Text(
-              message.status,
+              message.processamentoBvArquivo.status,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),

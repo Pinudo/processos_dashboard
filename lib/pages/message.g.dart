@@ -8,28 +8,37 @@ part of 'message.dart';
 
 Message _$MessageFromJson(Map<String, dynamic> json) {
   return Message(
-      json['status'] as String,
-      json['dataInicio'] as String,
-      json['dataFim'] as String,
-      json['agenda'] == null
+      json['processamentoAgendamentoVenda'] == null
           ? null
-          : Agenda.fromJson(json['agenda'] as Map<String, dynamic>),
-      (json['agendaDetalhe'] as List)
+          : Agenda.fromJson(
+              json['processamentoAgendamentoVenda'] as Map<String, dynamic>),
+      (json['processamentoReaplicacao'] as List)
           ?.map((e) => e == null
               ? null
-              : AgendaDetalhe.fromJson(e as Map<String, dynamic>))
+              : ProcessamentoReaplicacao.fromJson(e as Map<String, dynamic>))
           ?.toList(),
       json['processamentoBvArquivo'] == null
           ? null
           : ProcessaArquivoBV.fromJson(
-              json['processamentoBvArquivo'] as Map<String, dynamic>));
+              json['processamentoBvArquivo'] as Map<String, dynamic>),
+      json['qtdVendasRegistradas'] == null
+          ? null
+          : QtdVendasRegistradas.fromJson(
+              json['qtdVendasRegistradas'] as Map<String, dynamic>),
+      json['processamentoConciliacao'] == null
+          ? null
+          : ProcessamentoConciliacao.fromJson(
+              json['processamentoConciliacao'] as Map<String, dynamic>),
+      json['valorVendas'] == null
+          ? null
+          : ValorVendas.fromJson(json['valorVendas'] as Map<String, dynamic>));
 }
 
 Map<String, dynamic> _$MessageToJson(Message instance) => <String, dynamic>{
-      'status': instance.status,
-      'dataInicio': instance.dataInicio,
-      'dataFim': instance.dataFim,
-      'agenda': instance.agenda,
-      'agendaDetalhe': instance.agendaDetalhe,
-      'processamentoBvArquivo': instance.processamentoBvArquivo
+      'processamentoAgendamentoVenda': instance.processamentoAgendamentoVenda,
+      'processamentoReaplicacao': instance.processamentoReaplicacao,
+      'processamentoBvArquivo': instance.processamentoBvArquivo,
+      'processamentoConciliacao': instance.processamentoConciliacao,
+      'valorVendas': instance.valorVendas,
+      'qtdVendasRegistradas': instance.qtdVendasRegistradas
     };

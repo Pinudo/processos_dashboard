@@ -1,13 +1,13 @@
-class AgendaDetalhe {
+class ProcessamentoReaplicacao {
   String dataProcessamento;
   int qtdRegistros;
 
-  AgendaDetalhe(String dataProcessamento, int qtdRegistros) {
+  ProcessamentoReaplicacao(String dataProcessamento, int qtdRegistros) {
     this.dataProcessamento = dataProcessamento;
     this.qtdRegistros = qtdRegistros;
   }
 
-  AgendaDetalhe.fromJson(Map json)
+  ProcessamentoReaplicacao.fromJson(Map json)
       : dataProcessamento = json['dataProcessamento'],
         qtdRegistros = json['qtdRegistros'];
 

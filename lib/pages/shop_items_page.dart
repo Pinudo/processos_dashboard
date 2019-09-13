@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:processos_dashboard/models/AgendaDetalhe.dart';
+import 'package:processos_dashboard/models/ProcessamentoReaplicacao.dart';
 import 'item_reviews_page.dart';
 
 class ShopItemsPage extends StatefulWidget {
-  final List<AgendaDetalhe> agendaDetalhe;
+  final List<ProcessamentoReaplicacao> agendaDetalhe;
 
   const ShopItemsPage(agendaDetalhe2, {Key key, @required this.agendaDetalhe})
       : super(key: key);
@@ -13,7 +13,7 @@ class ShopItemsPage extends StatefulWidget {
 }
 
 class _ShopItemsPageState extends State<ShopItemsPage> {
-  List<AgendaDetalhe> agendaDetalhe;
+  List<ProcessamentoReaplicacao> agendaDetalhe;
 
   _ShopItemsPageState(this.agendaDetalhe);
 
@@ -22,15 +22,15 @@ class _ShopItemsPageState extends State<ShopItemsPage> {
     return Scaffold(
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.blue[900],
           leading: IconButton(
-            color: Colors.black,
+            color: Colors.white,
             onPressed: () => Navigator.of(context).pop(),
-            icon: Icon(Icons.arrow_back, color: Colors.black),
+            icon: Icon(Icons.arrow_back, color: Colors.white),
           ),
           title: Text('Reaplicacao',
               style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.w700)),
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
           // actions: <Widget>
           // [
           //   Container
@@ -151,12 +151,12 @@ class ShopItem extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: <Widget>[
-                                        Text('Quantidade: 11',
+                                        Text('Quantidade: ${this.qtdRegistros} ',
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.w700,
                                                 fontSize: 15.0)),
-                                        Icon(Icons.star,
+                                        Icon(Icons.check,
                                             color: Colors.black, size: 24.0),
                                       ],
                                     ),

@@ -255,7 +255,7 @@ class _MainPageState extends State<MainPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text('#weAreTeamDevs',
+                  Text('#JabutiTeamDevs',
                       style: TextStyle(
                           color: Colors.blue[900],
                           fontWeight: FontWeight.w700,
@@ -286,8 +286,8 @@ class _MainPageState extends State<MainPage> {
                 );
               case ConnectionState.done:
                 var messages = snapshot.data[0];
-                if(messages.agenda.status == "F"){
-                  messages.agenda.status = "Finalizado";
+                if(messages.processamentoAgendamentoVenda.status == "F"){
+                  messages.processamentoAgendamentoVenda.status = "Finalizado";
                 }
                /*  print('OK $messages.agenda ' +
                     messages.processa); */
@@ -312,7 +312,7 @@ class _MainPageState extends State<MainPage> {
                                   Text('Total Vendas Dia',
                                       style:
                                           TextStyle(color: Colors.blueAccent)),
-                                  Text('2500',
+                                  Text(messages.qtdVendasRegistradas.count,
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.w700,
@@ -382,13 +382,13 @@ class _MainPageState extends State<MainPage> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 19.0)),
-                              Text(messages.agenda.status,
+                              Text(messages.processamentoAgendamentoVenda.status,
                                   style: TextStyle(color: Colors.black45)),
                             ]),
                       ),onTap: () { Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => ProcessAgendamentoDetalhe(messages.agenda.status, messages.agenda.dataInicio, messages.agenda.dataFim)));
+                              builder: (BuildContext context) => ProcessAgendamentoDetalhe(messages.processamentoAgendamentoVenda.status, messages.processamentoAgendamentoVenda.dataInicio, messages.processamentoAgendamentoVenda.dataFim)));
                               },
                     ),
                     _buildTile(
@@ -412,7 +412,7 @@ class _MainPageState extends State<MainPage> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 19.0)),
-                              Text('OK',
+                              Text(messages.processamentoConciliacao.status,
                                   style: TextStyle(color: Colors.black45)),
                             ]),
                       ),
@@ -438,14 +438,14 @@ class _MainPageState extends State<MainPage> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 19.0)),
-                              Text(messages.agendaDetalhe[0].dataProcessamento,
+                              Text(messages.processamentoReaplicacao[0].dataProcessamento,
                                   style: TextStyle(color: Colors.black45)),
                             ]),
                       ),
                       onTap: () { Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => ShopItemsPage(messages.agendaDetalhe, agendaDetalhe: messages.agendaDetalhe,)));
+                              builder: (BuildContext context) => ShopItemsPage(messages.processamentoReaplicacao, agendaDetalhe: messages.processamentoReaplicacao,)));
                               },
                     ),
                     _buildTile(
@@ -462,7 +462,7 @@ class _MainPageState extends State<MainPage> {
                                   Text('Quantidade de Vendas',
                                       style:
                                           TextStyle(color: Colors.redAccent)),
-                                  Text('R\$ 257.000',
+                                  Text('R\$ '+ messages.valorVendas.valor,
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.w700,
@@ -480,11 +480,11 @@ class _MainPageState extends State<MainPage> {
                                   )))
                             ]),
                       ),
-                      onTap: () { Navigator.push(
+                      onTap: () { /* Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) => ShopItem(messages.agendaDetalhe[0].dataProcessamento, messages.agendaDetalhe[0].qtdRegistros)));
-                              },
+                               */},
                     )
                   ],
                   staggeredTiles: [
