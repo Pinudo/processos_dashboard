@@ -1,5 +1,5 @@
 class QtdVendasRegistradas {
-  String count;
+  int count;
   
   QtdVendasRegistradas(this.count) {
     this.count = count;

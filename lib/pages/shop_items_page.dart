@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:processos_dashboard/models/ProcessamentoReaplicacao.dart';
 import 'item_reviews_page.dart';
 
@@ -470,6 +471,49 @@ class NewShopItem extends StatelessWidget {
               ],
             )),
       ),
+    );
+  }
+}
+
+class ValorVendas extends StatelessWidget {
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: StaggeredGridView.count(crossAxisCount: 2,
+                  crossAxisSpacing: 12.0,
+                  mainAxisSpacing: 12.0,
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  children: <Widget>[
+                    Padding(
+                        padding: const EdgeInsets.all(24.0),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Material(
+                                  color: Colors.teal,
+                                  shape: CircleBorder(),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Icon(Icons.assessment,
+                                        color: Colors.white, size: 30.0),
+                                  )),
+                              Padding(padding: EdgeInsets.only(bottom: 10.0)),
+                              Text('Processa Venda BV',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 19.0)),
+                              Text('Finalizado',
+                                  style: TextStyle(color: Colors.black45)),
+                            ]),
+                      ),
+                  ],
+
+      )
     );
   }
 }

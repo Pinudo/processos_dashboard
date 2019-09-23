@@ -1,16 +1,25 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:http/http.dart' as http;
 import 'package:processos_dashboard/pages/message.dart';
 import 'package:processos_dashboard/pages/process_agendamento_detalhe.dart';
 import 'package:processos_dashboard/pages/processa_venda_bv_detalhe.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 import 'shop_items_page.dart';
 
-class MainPage extends StatefulWidget {
+class 
+MainPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _MainPageState();
+}
+
+class ClicksPerYear {
+  final String year;
+  final int clicks;
+  final charts.Color color;
+
+  ClicksPerYear(this.year, this.clicks, Color color)
+      : this.color = new charts.Color(
+            r: color.red, g: color.green, b: color.blue, a: color.alpha);
 }
 
 class _MainPageState extends State<MainPage> {
@@ -21,213 +30,6 @@ class _MainPageState extends State<MainPage> {
     super.initState();
     messages = Message.browse();
   }
-
-  final List<List<double>> charts = [
-    [
-      0.0,
-      0.3,
-      0.7,
-      0.6,
-      0.55,
-      0.8,
-      1.2,
-      1.3,
-      1.35,
-      0.9,
-      1.5,
-      1.7,
-      1.8,
-      1.7,
-      1.2,
-      0.8,
-      1.9,
-      2.0,
-      2.2,
-      1.9,
-      2.2,
-      2.1,
-      2.0,
-      2.3,
-      2.4,
-      2.45,
-      2.6,
-      3.6,
-      2.6,
-      2.7,
-      2.9,
-      2.8,
-      3.4
-    ],
-    [
-      0.0,
-      0.3,
-      0.7,
-      0.6,
-      0.55,
-      0.8,
-      1.2,
-      1.3,
-      1.35,
-      0.9,
-      1.5,
-      1.7,
-      1.8,
-      1.7,
-      1.2,
-      0.8,
-      1.9,
-      2.0,
-      2.2,
-      1.9,
-      2.2,
-      2.1,
-      2.0,
-      2.3,
-      2.4,
-      2.45,
-      2.6,
-      3.6,
-      2.6,
-      2.7,
-      2.9,
-      2.8,
-      3.4,
-      0.0,
-      0.3,
-      0.7,
-      0.6,
-      0.55,
-      0.8,
-      1.2,
-      1.3,
-      1.35,
-      0.9,
-      1.5,
-      1.7,
-      1.8,
-      1.7,
-      1.2,
-      0.8,
-      1.9,
-      2.0,
-      2.2,
-      1.9,
-      2.2,
-      2.1,
-      2.0,
-      2.3,
-      2.4,
-      2.45,
-      2.6,
-      3.6,
-      2.6,
-      2.7,
-      2.9,
-      2.8,
-      3.4,
-    ],
-    [
-      0.0,
-      0.3,
-      0.7,
-      0.6,
-      0.55,
-      0.8,
-      1.2,
-      1.3,
-      1.35,
-      0.9,
-      1.5,
-      1.7,
-      1.8,
-      1.7,
-      1.2,
-      0.8,
-      1.9,
-      2.0,
-      2.2,
-      1.9,
-      2.2,
-      2.1,
-      2.0,
-      2.3,
-      2.4,
-      2.45,
-      2.6,
-      3.6,
-      2.6,
-      2.7,
-      2.9,
-      2.8,
-      3.4,
-      0.0,
-      0.3,
-      0.7,
-      0.6,
-      0.55,
-      0.8,
-      1.2,
-      1.3,
-      1.35,
-      0.9,
-      1.5,
-      1.7,
-      1.8,
-      1.7,
-      1.2,
-      0.8,
-      1.9,
-      2.0,
-      2.2,
-      1.9,
-      2.2,
-      2.1,
-      2.0,
-      2.3,
-      2.4,
-      2.45,
-      2.6,
-      3.6,
-      2.6,
-      2.7,
-      2.9,
-      2.8,
-      3.4,
-      0.0,
-      0.3,
-      0.7,
-      0.6,
-      0.55,
-      0.8,
-      1.2,
-      1.3,
-      1.35,
-      0.9,
-      1.5,
-      1.7,
-      1.8,
-      1.7,
-      1.2,
-      0.8,
-      1.9,
-      2.0,
-      2.2,
-      1.9,
-      2.2,
-      2.1,
-      2.0,
-      2.3,
-      2.4,
-      2.45,
-      2.6,
-      3.6,
-      2.6,
-      2.7,
-      2.9,
-      2.8,
-      3.4
-    ]
-  ];
 
   static final List<String> chartDropdownItems = [
     'Last 7 days',
@@ -286,10 +88,25 @@ class _MainPageState extends State<MainPage> {
                 );
               case ConnectionState.done:
                 var messages = snapshot.data[0];
-                if(messages.processamentoAgendamentoVenda.status == "F"){
+                var data = [
+                    new ClicksPerYear('BA', 12, Colors.yellow[600]),
+                    new ClicksPerYear('RJ', 42, Colors.yellow[600]),
+                    new ClicksPerYear('MG', 2, Colors.yellow[600]),
+                    new ClicksPerYear('SP', 25, Colors.yellow[600])
+];
+                var serieList = [
+                  new charts.Series(
+                    id: 'Clicks',
+                    domainFn: (ClicksPerYear clickData, _) => clickData.year,
+                    measureFn: (ClicksPerYear clickData, _) => clickData.clicks,
+                    colorFn: (ClicksPerYear clickData, _) => clickData.color,
+                    data: data,
+                  ),
+                ];
+                if (messages.processamentoAgendamentoVenda.status == "F") {
                   messages.processamentoAgendamentoVenda.status = "Finalizado";
                 }
-               /*  print('OK $messages.agenda ' +
+                /*  print('OK $messages.agenda ' +
                     messages.processa); */
                 return StaggeredGridView.count(
                   crossAxisCount: 2,
@@ -312,7 +129,7 @@ class _MainPageState extends State<MainPage> {
                                   Text('Total Vendas Dia',
                                       style:
                                           TextStyle(color: Colors.blueAccent)),
-                                  Text(messages.qtdVendasRegistradas.count,
+                                  Text('${messages.qtdVendasRegistradas.count}',
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.w700,
@@ -330,6 +147,13 @@ class _MainPageState extends State<MainPage> {
                                   )))
                             ]),
                       ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    SimpleBarChart(serieList, animate: true)));
+                      },
                     ),
                     _buildTile(
                       Padding(
@@ -355,11 +179,14 @@ class _MainPageState extends State<MainPage> {
                               Text('Finalizado',
                                   style: TextStyle(color: Colors.black45)),
                             ]),
-                      ),onTap: () { Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => ContactUsScreen()));
-                              },
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    ProcessaVendaBV()));
+                      },
                     ),
                     _buildTile(
                       Padding(
@@ -382,14 +209,24 @@ class _MainPageState extends State<MainPage> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 19.0)),
-                              Text(messages.processamentoAgendamentoVenda.status,
+                              Text(
+                                  messages.processamentoAgendamentoVenda.status,
                                   style: TextStyle(color: Colors.black45)),
                             ]),
-                      ),onTap: () { Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => ProcessAgendamentoDetalhe(messages.processamentoAgendamentoVenda.status, messages.processamentoAgendamentoVenda.dataInicio, messages.processamentoAgendamentoVenda.dataFim)));
-                              },
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    ProcessAgendamentoDetalhe(
+                                        messages.processamentoAgendamentoVenda
+                                            .status,
+                                        messages.processamentoAgendamentoVenda
+                                            .dataInicio,
+                                        messages.processamentoAgendamentoVenda
+                                            .dataFim)));
+                      },
                     ),
                     _buildTile(
                       Padding(
@@ -438,15 +275,23 @@ class _MainPageState extends State<MainPage> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 19.0)),
-                              Text(messages.processamentoReaplicacao[0].dataProcessamento,
+                              Text(
+                                  messages.processamentoReaplicacao[0]
+                                      .dataProcessamento,
                                   style: TextStyle(color: Colors.black45)),
                             ]),
                       ),
-                      onTap: () { Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => ShopItemsPage(messages.processamentoReaplicacao, agendaDetalhe: messages.processamentoReaplicacao,)));
-                              },
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    ShopItemsPage(
+                                      messages.processamentoReaplicacao,
+                                      agendaDetalhe:
+                                          messages.processamentoReaplicacao,
+                                    )));
+                      },
                     ),
                     _buildTile(
                       Padding(
@@ -462,7 +307,7 @@ class _MainPageState extends State<MainPage> {
                                   Text('Quantidade de Vendas',
                                       style:
                                           TextStyle(color: Colors.redAccent)),
-                                  Text('R\$ '+ messages.valorVendas.valor,
+                                  Text('R\$ ' + messages.valorVendas.valor,
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.w700,
@@ -480,11 +325,13 @@ class _MainPageState extends State<MainPage> {
                                   )))
                             ]),
                       ),
-                      onTap: () { /* Navigator.push(
+                      onTap: () {
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => ShopItem(messages.agendaDetalhe[0].dataProcessamento, messages.agendaDetalhe[0].qtdRegistros)));
-                               */},
+                              builder: (BuildContext context) => ValorVendas()));
+                               
+                      },
                     )
                   ],
                   staggeredTiles: [
