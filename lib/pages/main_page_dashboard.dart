@@ -329,7 +329,7 @@ class _MainPageState extends State<MainPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => ValorVendas()));
+                              builder: (BuildContext context) => MyHomeChart()));
                                
                       },
                     )
