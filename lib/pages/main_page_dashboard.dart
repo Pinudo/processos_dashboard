@@ -89,10 +89,10 @@ class _MainPageState extends State<MainPage> {
               case ConnectionState.done:
                 var messages = snapshot.data[0];
                 var data = [
-                    new ClicksPerYear('BA', 12, Colors.yellow[600]),
-                    new ClicksPerYear('RJ', 42, Colors.yellow[600]),
-                    new ClicksPerYear('MG', 2, Colors.yellow[600]),
-                    new ClicksPerYear('SP', 25, Colors.yellow[600])
+                    new ClicksPerYear('BA', 126, Colors.yellow[600]),
+                    new ClicksPerYear('RJ', 420, Colors.yellow[600]),
+                    new ClicksPerYear('MG', 200, Colors.yellow[600]),
+                    new ClicksPerYear('SP', 336, Colors.yellow[600])
 ];
                 var serieList = [
                   new charts.Series(

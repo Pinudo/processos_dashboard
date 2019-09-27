@@ -196,15 +196,17 @@ class _MyHomeChart extends State<MyHomeChart> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        color: Colors.blueAccent,
-                      ),
-                    ),
-                  ),
+                      padding: EdgeInsets.all(1.0),
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(maxHeight: 40, maxWidth: 150),
+                        child: Text(
+                          title,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.blueAccent,
+                          ),
+                        ),
+                      )),
                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
@@ -239,15 +241,18 @@ class _MyHomeChart extends State<MyHomeChart> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        color: Colors.blueAccent,
-                      ),
-                    ),
-                  ),
+                      padding: EdgeInsets.all(1.0),
+                      child: ConstrainedBox(
+                        constraints:
+                            BoxConstraints(maxHeight: 40, maxWidth: 150),
+                        child: Text(
+                          title,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.blueAccent,
+                          ),
+                        ),
+                      )),
                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
@@ -291,7 +296,8 @@ class _MyHomeChart extends State<MyHomeChart> {
                   Padding(
                       padding: EdgeInsets.all(1.0),
                       child: ConstrainedBox(
-                        constraints: BoxConstraints(maxHeight: 40, maxWidth: 300),
+                        constraints:
+                            BoxConstraints(maxHeight: 40, maxWidth: 300),
                         child: Text(
                           title,
                           style: TextStyle(
@@ -353,15 +359,18 @@ class _MyHomeChart extends State<MyHomeChart> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.all(1.0),
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.blueAccent,
-                      ),
-                    ),
-                  ),
+                      padding: EdgeInsets.all(1.0),
+                      child: ConstrainedBox(
+                        constraints:
+                            BoxConstraints(maxHeight: 40, maxWidth: 300),
+                        child: Text(
+                          title,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.blueAccent,
+                          ),
+                        ),
+                      )),
                   Padding(
                     padding: EdgeInsets.all(1.0),
                     child: Text(
@@ -430,7 +439,7 @@ class _MyHomeChart extends State<MyHomeChart> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: myCircularItems("Venda parceiro", "62.7M"),
+              child: myCircularItems("Venda parceiro", "R\$ 6.200"),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
@@ -443,7 +452,7 @@ class _MyHomeChart extends State<MyHomeChart> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: mychart2Items(
-                  "Evolução das vendas diárias", "0.9M", "+19% do objetivo"),
+                  "Evolução das vendas diárias", "R\$ 9.000", "+19% do objetivo"),
             ),
           ],
           staggeredTiles: [

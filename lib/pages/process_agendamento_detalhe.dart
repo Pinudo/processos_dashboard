@@ -22,7 +22,7 @@ class ProcessAgendamentoDetalhe extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
       ),
       body: Padding(
-        padding: EdgeInsets.only(bottom: 16.0),
+        padding: EdgeInsets.all(6.0),
         child: Stack(
           children: <Widget>[
             Align(
