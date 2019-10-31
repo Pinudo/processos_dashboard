@@ -34,7 +34,7 @@ class ProcessAgendamentoDetalhe extends StatelessWidget {
                     children: <Widget>[
                       /// Item description inside a material
                       Container(
-                        margin: EdgeInsets.only(top: 24.0),
+                        margin: EdgeInsets.only(top: 20.0),
                         child: Material(
                           elevation: 5.0,
                           borderRadius: BorderRadius.circular(12.0),

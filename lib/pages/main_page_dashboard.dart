@@ -49,10 +49,10 @@ class _MainPageState extends State<MainPage> {
               style: TextStyle(
                   color: Colors.blue[900],
                   fontWeight: FontWeight.w700,
-                  fontSize: 30.0)),
+                  fontSize: 25.0)),
           actions: <Widget>[
             Container(
-              margin: EdgeInsets.only(right: 8.0),
+              margin: EdgeInsets.only(right: 8.0, left: 16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -166,7 +166,7 @@ class _MainPageState extends State<MainPage> {
                                   color: Colors.teal,
                                   shape: CircleBorder(),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(16.0),
+                                    padding: const EdgeInsets.all(14.0),
                                     child: Icon(Icons.assessment,
                                         color: Colors.white, size: 30.0),
                                   )),
@@ -203,7 +203,7 @@ class _MainPageState extends State<MainPage> {
                                     child: Icon(Icons.assessment,
                                         color: Colors.white, size: 30.0),
                                   )),
-                              Padding(padding: EdgeInsets.only(bottom: 10.0)),
+                              Padding(padding: EdgeInsets.only(bottom: 6.0)),
                               Text('Processo Agendado',
                                   style: TextStyle(
                                       color: Colors.black,
@@ -243,7 +243,7 @@ class _MainPageState extends State<MainPage> {
                                     child: Icon(Icons.assessment,
                                         color: Colors.white, size: 30.0),
                                   )),
-                              Padding(padding: EdgeInsets.only(bottom: 10.0)),
+                              Padding(padding: EdgeInsets.only(bottom: 6.0)),
                               Text('Processa de Conciliação',
                                   style: TextStyle(
                                       color: Colors.black,
@@ -269,7 +269,7 @@ class _MainPageState extends State<MainPage> {
                                     child: Icon(Icons.assessment,
                                         color: Colors.white, size: 30.0),
                                   )),
-                              Padding(padding: EdgeInsets.only(bottom: 10.0)),
+                              Padding(padding: EdgeInsets.only(bottom: 6.0)),
                               Text('Processo de Reaplicação',
                                   style: TextStyle(
                                       color: Colors.black,
