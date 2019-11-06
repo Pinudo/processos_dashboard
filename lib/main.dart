@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:processos_dashboard/pages/main_page_dashboard.dart';
+import 'package:flutter/services.dart';
+import 'package:processos_dashboard/app.dart';
+import 'package:processos_dashboard/utils/colors.dart';
 
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '16 : 20',
-      theme: ThemeData(primarySwatch: Colors.blue, accentColor: Colors.red),
-      home: MainPage(),
-    );
-  }
+void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: primaryDark
+  ));
+  runApp(App());
 }
 
 /* import 'dart:convert';
